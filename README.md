@@ -1,17 +1,4 @@
-# plantuml-test
+# Plantuml-test
 
-```plantuml
-@startuml
-    skinparam backgroundColor #EEEBDC
-    skinparam handwritten true
-    actor Customer
-    Customer -> "login()" : username & password
-    "login()" -> Customer : session token
-    activate "login()"
-    Customer -> "placeOrder()" : session token, order info
-    "placeOrder()" -> Customer : ok
-    Customer -> "logout()"
-    "logout()" -> Customer : ok
-    deactivate "login()"
-@enduml
-```
+## Use cases of the application
+![Use case](https://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/arrudalabs/plantuml-test/master/usecase.puml)

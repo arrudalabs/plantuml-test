@@ -1,0 +1,83 @@
+@startuml
+
+left to right direction
+actor Administrator as admin 
+actor Coordinator as coordinator
+actor Instructor as instructor 
+actor Examinator as examinator 
+actor Student as student
+
+coordinator <|- admin
+instructor <|-- coordinator
+examinator <|-- coordinator
+student <|-- coordinator
+student <|-- examinator
+student <|-- instructor
+
+rectangle "Members" { 
+    usecase (Member list) as mList
+    usecase (Member registration) as mRegistration
+    usecase (Member removal) as mRemoval
+    usecase (Member update) as mUpdate
+    usecase (Member role promotion) as mRolePromotion
+    usecase (Member deactivation) as mDeactivation
+    usecase (Member password change) as mPasswordChange
+}
+
+rectangle "Profiles" { 
+    usecase (Profile View) as pView
+    usecase (Profile update) as pUpdate
+    usecase (Profile Password Change) as pPassChange
+}
+
+rectangle "Absents" {
+    usecase (Adsent registration) as abRegistragion
+    usecase (Absent removal) as abRemoval
+}
+
+rectangle "Classes" {
+    usecase (Class list) as clList
+    usecase (Class creation) as clCreation
+    usecase (Class edition) as clEdition
+    usecase (Class removal) as clRemoval
+
+}
+
+rectangle "Exams" {
+    usecase (Exam creation) as exCreation
+    usecase (Exam result registration) as exResult
+    usecase (Exam edition) as exEdition
+    usecase (Exam conclusion) as exConclusion    
+}
+
+
+
+
+coordinator --> mRolePromotion
+coordinator --> mPasswordChange
+
+coordinator --> exCreation
+coordinator --> exEdition
+coordinator --> exConclusion
+
+coordinator --> clCreation
+coordinator --> clEdition
+coordinator --> clRemoval
+
+instructor --> mList
+instructor --> mRegistration
+instructor --> mUpdate
+instructor --> mDeactivation
+instructor --> mRemoval
+
+instructor --> abRegistragion
+instructor --> abRemoval
+
+examinator --> exResult
+
+student --> pView
+student --> pUpdate
+student --> pPassChange
+student --> clList
+
+@enduml
